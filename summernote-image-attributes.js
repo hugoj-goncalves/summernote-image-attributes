@@ -210,31 +210,33 @@
           body:   body,
           footer: '<button href="#" class="btn btn-primary note-btn note-btn-primary note-imageAttributes-btn">' + lang.imageAttributes.editBtn + '</button>'
         }).render().appendTo($container);
-        $('[id^="tab-imageAttributes-"] a').on('click', function(e) {
-          e.preventDefault();
-          $(this)
-            .parents("ul")
-            .children("li")
-            .removeClass("active")
-            .children("a")
-            .removeClass("active");
-          $(this)
-            .parents("ul")
-            .siblings(".tab-content")
-            .children()
-            .removeClass("show active");
+        if (!$('body').tab) {
+          $('[id^="tab-imageAttributes-"] a').on('click', function(e) {
+            e.preventDefault();
+            $(this)
+              .parents("ul")
+              .children("li")
+              .removeClass("active")
+              .children("a")
+              .removeClass("active");
+            $(this)
+              .parents("ul")
+              .siblings(".tab-content")
+              .children()
+              .removeClass("show active");
 
-          $(this).addClass("active");
-          var tab = $(this).attr("href");
-          $(this)
-            .parents("ul")
-            .siblings(".tab-content")
-            .children(tab)
-            .addClass('show active');
+            $(this).addClass("active");
+            var tab = $(this).attr("href");
+            $(this)
+              .parents("ul")
+              .siblings(".tab-content")
+              .children(tab)
+              .addClass('show active');
 
-          $(this).tab('show');
-        });
-      };
+            $(this).tab('show');
+          });
+        };
+      }
       this.destroy = function () {
         ui.hideDialog(this.$dialog);
         this.$dialog.remove();
