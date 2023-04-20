@@ -104,7 +104,7 @@
         body +=     '</ul>' +
                     '<div class="tab-content">' +
 // Tab 2
-                    '<div class="tab-pane note-tab-pane" id="note-imageAttributes-attributes-' + i + '">' +
+                    '<div class="tab-pane note-tab-pane fade" id="note-imageAttributes-attributes-' + i + '">' +
                       '<div class="note-form-group form-group note-group-imageAttributes-class">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.class + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
@@ -125,7 +125,7 @@
                       '</div>' +
                     '</div>' +
 // Tab 3
-                    '<div class="tab-pane note-tab-pane" id="note-imageAttributes-link-' + i + '">' +
+                    '<div class="tab-pane note-tab-pane fade" id="note-imageAttributes-link-' + i + '">' +
                       '<div class="note-form-group form-group note-group-imageAttributes-link-href">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkHref + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
@@ -167,7 +167,7 @@
                     '</div>';
       if (options.imageAttributes.disableUpload == false) {
 // Tab 4
-        body +=     '<div class="tab-pane note-tab-pane" id="note-imageAttributes-upload-' + i + '">' +
+        body +=     '<div class="tab-pane note-tab-pane fade" id="note-imageAttributes-upload-' + i + '">' +
                       '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.upload + '</label>' +
                       '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                         '<input class="note-imageAttributes-input form-control note-form-control note-input" type="file" name="files" accept="image/*" multiple="multiple">' +
