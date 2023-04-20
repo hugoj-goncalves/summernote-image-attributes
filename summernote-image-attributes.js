@@ -95,6 +95,8 @@
         $.summernote.options.imageAttributes._counter++;
         var i = $.summernote.options.imageAttributes._counter;
         // console.log('indice for imageAttribute : ', i);
+        var hideAdvancedOptions = options.imageAttributes.hideAdvancedOptions == false ? "d-none" : "";
+
         var body = '<ul class="nav note-nav nav-tabs note-nav-tabs" id="tab-imageAttributes-' + i + '">' +
                       '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>';
 
@@ -146,26 +148,26 @@
                         '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkTargetInfo + '</small>' +
                       '</div>';
         body +=
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-class ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-class ' + hideAdvancedOptions + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkClass + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-class form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-style ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-style ' + hideAdvancedOptions + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkStyle + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-style form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-rel ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-rel ' + hideAdvancedOptions + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkRel + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-rel form-control note-form-control note-input" type="text">' +
                         '</div>' +
                         '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkRelInfo + '</small>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-role ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-role ' + hideAdvancedOptions + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkRole + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-role form-control note-form-control note-input" type="text">' +
@@ -184,7 +186,7 @@
         }
 // Tab 1
         body +=     '<div class="tab-pane note-tab-pane fade show active" id="note-imageAttributes-' + i + '">';
-        body +=       '<div class="note-form-group form-group note-group-imageAttributes-url ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
+        body +=       '<div class="note-form-group form-group note-group-imageAttributes-url ' + hideAdvancedOptions + '">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.src + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-src form-control note-form-control note-input" type="text">' +
