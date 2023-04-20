@@ -212,6 +212,26 @@
         }).render().appendTo($container);
         $('[id^="tab-imageAttributes-"] a').on('click', function(e) {
           e.preventDefault();
+          $(this)
+            .parents("ul")
+            .children("li")
+            .removeClass("active")
+            .children("a")
+            .removeClass("active");
+          $(this)
+            .parents("ul")
+            .siblings(".tab-content")
+            .children()
+            .removeClass("show active");
+
+          $(this).addClass("active");
+          var tab = $(this).attr("href");
+          $(this)
+            .parents("ul")
+            .siblings(".tab-content")
+            .children(tab)
+            .addClass('show active');
+
           $(this).tab('show');
         });
       };
