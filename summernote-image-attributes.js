@@ -94,14 +94,16 @@
         $.summernote.options.imageAttributes._counter++;
         var i = $.summernote.options.imageAttributes._counter;
         // console.log('indice for imageAttribute : ', i);
-        var body = '<ul class="nav note-nav nav-tabs note-nav-tabs">' +
-                      '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>' +
-                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a></li>' +
-                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a></li>';
+        var body = '<nav>' +
+                    '<div class="nav note-nav nav-tabs note-nav-tabs">' +
+                      '<a class="nav-item nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a>>' +
+                      '<a class="nav-item nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a>' +
+                      '<a class="nav-item nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a>';
         if (options.imageAttributes.disableUpload == false) {
-           body +=    '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-upload-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabUpload + '</a></li>';
+           body +=    '<a class="nav-item nav-link" href="#note-imageAttributes-upload-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabUpload + '</a>>';
         }
-        body +=     '</ul>' +
+        body +=     '</div>' +
+                    '</nav>' +
                     '<div class="tab-content">' +
 // Tab 2
                     '<div class="tab-pane note-tab-pane" id="note-imageAttributes-attributes-' + i + '">' +
@@ -176,7 +178,7 @@
                     '</div>';
         }
 // Tab 1
-        body +=     '<div class="tab-pane note-tab-pane fade in active" id="note-imageAttributes-' + i + '">' +
+        body +=     '<div class="tab-pane note-tab-pane in active" id="note-imageAttributes-' + i + '">' +
                       '<div class="note-form-group form-group note-group-imageAttributes-url">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.src + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
