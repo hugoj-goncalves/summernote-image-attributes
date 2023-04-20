@@ -210,7 +210,7 @@
           body:   body,
           footer: '<button href="#" class="btn btn-primary note-btn note-btn-primary note-imageAttributes-btn">' + lang.imageAttributes.editBtn + '</button>'
         }).render().appendTo($container);
-        $('[id^="tab-imageAttributes-"]').on('click', function(e) {
+        $('[id^="tab-imageAttributes-"] a').on('click', function(e) {
           e.preventDefault();
           $(this).tab('show');
         });
