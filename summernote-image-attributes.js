@@ -94,16 +94,14 @@
         $.summernote.options.imageAttributes._counter++;
         var i = $.summernote.options.imageAttributes._counter;
         // console.log('indice for imageAttribute : ', i);
-        var body = '<nav>' +
-                    '<div class="nav note-nav nav-tabs note-nav-tabs">' +
-                      '<a class="nav-item nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a>>' +
-                      '<a class="nav-item nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a>' +
-                      '<a class="nav-item nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a>';
+        var body = '<ul class="nav note-nav nav-tabs note-nav-tabs" id="tab-imageAttributes-' + i + '">' +
+                      '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>' +
+                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a></li>' +
+                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a></li>';
         if (options.imageAttributes.disableUpload == false) {
-           body +=    '<a class="nav-item nav-link" href="#note-imageAttributes-upload-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabUpload + '</a>>';
+           body +=    '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-upload-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabUpload + '</a></li>';
         }
-        body +=     '</div>' +
-                    '</nav>' +
+        body +=     '</ul>' +
                     '<div class="tab-content">' +
 // Tab 2
                     '<div class="tab-pane note-tab-pane" id="note-imageAttributes-attributes-' + i + '">' +
@@ -178,7 +176,7 @@
                     '</div>';
         }
 // Tab 1
-        body +=     '<div class="tab-pane note-tab-pane in active" id="note-imageAttributes-' + i + '">' +
+        body +=     '<div class="tab-pane note-tab-pane fade show active" id="note-imageAttributes-' + i + '">' +
                       '<div class="note-form-group form-group note-group-imageAttributes-url">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.src + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
@@ -212,6 +210,10 @@
           body:   body,
           footer: '<button href="#" class="btn btn-primary note-btn note-btn-primary note-imageAttributes-btn">' + lang.imageAttributes.editBtn + '</button>'
         }).render().appendTo($container);
+        $('[id^="tab-imageAttributes-"]').on('click', function(e) {
+          e.preventDefault();
+          $(this).tab('show');
+        });
       };
       this.destroy = function () {
         ui.hideDialog(this.$dialog);
