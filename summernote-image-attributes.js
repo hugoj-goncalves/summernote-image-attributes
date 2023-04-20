@@ -38,6 +38,7 @@
           role: 'Role',
         tabLink: 'Link',
           linkHref: 'URL',
+          linkHrefInfo: 'External links should start with http(s)://',
           linkTarget: 'Target',
           linkTargetInfo: 'Options: _self, _blank, _top, _parent',
           linkClass: 'Class',
@@ -95,9 +96,12 @@
         var i = $.summernote.options.imageAttributes._counter;
         // console.log('indice for imageAttribute : ', i);
         var body = '<ul class="nav note-nav nav-tabs note-nav-tabs" id="tab-imageAttributes-' + i + '">' +
-                      '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>' +
-                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a></li>' +
-                      '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a></li>';
+                      '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>';
+
+        if (options.imageAttributes.disableAttributes == false) {
+          body += '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-attributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabAttributes + '</a></li>';
+        }
+        body += '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-link-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabLink + '</a></li>';
         if (options.imageAttributes.disableUpload == false) {
            body +=    '<li class="nav-item note-nav-item"><a class="nav-link note-nav-link" href="#note-imageAttributes-upload-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabUpload + '</a></li>';
         }
@@ -123,14 +127,16 @@
                           '<input class="note-imageAttributes-role form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                    '</div>' +
+                    '</div>';
 // Tab 3
+        body +=
                     '<div class="tab-pane note-tab-pane fade" id="note-imageAttributes-link-' + i + '">' +
                       '<div class="note-form-group form-group note-group-imageAttributes-link-href">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkHref + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-href form-control note-form-control note-input" type="text">' +
                         '</div>' +
+                        '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkHrefInfo + '</small>' +
                       '</div>' +
                       '<div class="note-form-group form-group note-group-imageAttributes-link-target">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkTarget + '</label>' +
@@ -138,7 +144,9 @@
                           '<input class="note-imageAttributes-link-target form-control note-form-control note-input" type="text">' +
                         '</div>' +
                         '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkTargetInfo + '</small>' +
-                      '</div>' +
+                      '</div>';
+      if (options.imageAttributes.hideAdvancedOptions == false) {
+        body +=
                       '<div class="note-form-group form-group note-group-imageAttributes-link-class">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkClass + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
@@ -163,8 +171,9 @@
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-role form-control note-form-control note-input" type="text">' +
                         '</div>' +
-                      '</div>' +
-                    '</div>';
+                      '</div>';
+      }
+        body +=     '</div>';
       if (options.imageAttributes.disableUpload == false) {
 // Tab 4
         body +=     '<div class="tab-pane note-tab-pane fade" id="note-imageAttributes-upload-' + i + '">' +
@@ -176,14 +185,16 @@
                     '</div>';
         }
 // Tab 1
-        body +=     '<div class="tab-pane note-tab-pane fade show active" id="note-imageAttributes-' + i + '">' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-url">' +
+        body +=     '<div class="tab-pane note-tab-pane fade show active" id="note-imageAttributes-' + i + '">';
+      if (options.imageAttributes.hideAdvancedOptions == false) {
+        body +=       '<div class="note-form-group form-group note-group-imageAttributes-url">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.src + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-src form-control note-form-control note-input" type="text">' +
                         '</div>' +
-                      '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-title">' +
+                      '</div>';
+      }
+        body +=       '<div class="note-form-group form-group note-group-imageAttributes-title">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.title + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-title form-control note-form-control note-input" type="text">' +
@@ -351,6 +362,24 @@
             );
             $editBtn.click( function (e) {
               e.preventDefault();
+
+              var style = $linkStyle.val();
+              var width = $imageWidth.val();
+              var height = $imageHeight.val();
+              if (style) {
+                var a = document.createElement("div");
+                a.setAttribute("style", style);
+
+                if (width) {
+                  a.style.width = '';
+                }
+                if (height) {
+                  a.style.height = '';
+                }
+
+                style = a.getAttribute('style');
+              }
+
               deferred.resolve({
                 imgDom:     imgInfo.imgDom,
                 title:      $imageTitle.val(),

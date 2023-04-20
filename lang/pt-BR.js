@@ -15,6 +15,7 @@ $.extend(true,$.summernote.lang,{
         role: 'Papel',
       tabLink: 'Link',
         linkHref: 'URL',
+        linkHrefInfo: 'Links externos devem começar com http(s)://',
         linkTarget: 'Destino',
         linkTargetInfo: 'Opções: _self, _blank, _top, _parent',
         linkClass: 'Classes',
