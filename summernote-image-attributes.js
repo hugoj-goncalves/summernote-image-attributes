@@ -145,34 +145,32 @@
                         '</div>' +
                         '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkTargetInfo + '</small>' +
                       '</div>';
-      if (options.imageAttributes.hideAdvancedOptions == false) {
         body +=
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-class">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-class ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkClass + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-class form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-style">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-style ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkStyle + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-style form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-rel">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-rel ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkRel + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-rel form-control note-form-control note-input" type="text">' +
                         '</div>' +
                         '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkRelInfo + '</small>' +
                       '</div>' +
-                      '<div class="note-form-group form-group note-group-imageAttributes-link-role">' +
+                      '<div class="note-form-group form-group note-group-imageAttributes-link-role ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkRole + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-link-role form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>';
-      }
         body +=     '</div>';
       if (options.imageAttributes.disableUpload == false) {
 // Tab 4
@@ -186,14 +184,12 @@
         }
 // Tab 1
         body +=     '<div class="tab-pane note-tab-pane fade show active" id="note-imageAttributes-' + i + '">';
-      if (options.imageAttributes.hideAdvancedOptions == false) {
-        body +=       '<div class="note-form-group form-group note-group-imageAttributes-url">' +
+        body +=       '<div class="note-form-group form-group note-group-imageAttributes-url ' + options.imageAttributes.hideAdvancedOptions == false ? 'd-none': '' + '">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.src + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           '<input class="note-imageAttributes-src form-control note-form-control note-input" type="text">' +
                         '</div>' +
                       '</div>';
-      }
         body +=       '<div class="note-form-group form-group note-group-imageAttributes-title">' +
                         '<label class="control-label note-form-label col-sm-3">' + lang.imageAttributes.title + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
@@ -363,7 +359,7 @@
             $editBtn.click( function (e) {
               e.preventDefault();
 
-              var style = $linkStyle.val();
+              var style = $imageStyle.val();
               var width = $imageWidth.val();
               var height = $imageHeight.val();
               if (style) {
@@ -385,10 +381,10 @@
                 title:      $imageTitle.val(),
                 src:        $imageSrc.val(),
                 alt:        $imageAlt.val(),
-                width:      $imageWidth.val(),
-                height:     $imageHeight.val(),
+                width:      width,
+                height:     height,
                 class:      $imageClass.val(),
-                style:      $imageStyle.val(),
+                style:      style,
                 role:       $imageRole.val(),
                 linkHref:   $linkHref.val(),
                 linkTarget: $linkTarget.val(),
