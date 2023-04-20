@@ -95,7 +95,7 @@
         $.summernote.options.imageAttributes._counter++;
         var i = $.summernote.options.imageAttributes._counter;
         // console.log('indice for imageAttribute : ', i);
-        var hideAdvancedOptions = options.imageAttributes.hideAdvancedOptions == false ? "d-none" : "";
+        var hideAdvancedOptions = options.imageAttributes.hideAdvancedOptions == true ? "d-none" : "";
 
         var body = '<ul class="nav note-nav nav-tabs note-nav-tabs" id="tab-imageAttributes-' + i + '">' +
                       '<li class="nav-item note-nav-item active"><a class="nav-link note-nav-link active" href="#note-imageAttributes-' + i + '" data-toggle="tab">' + lang.imageAttributes.tabImage + '</a></li>';
