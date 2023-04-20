@@ -145,13 +145,11 @@
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
                           // '<input class="note-imageAttributes-link-target form-control note-form-control note-input" type="text">' +
                           `<select class="note-imageAttributes-link-target form-control note-form-control note-input">
-                            <option>_self</option>
-                            <option>_blank</option>
-                            <option>_top</option>
-                            <option>_parent</option>
+                            <option value="">Mesma página</option>
+                            <option value="_blank">Nova aba</option>
                           </select>` +
                         '</div>' +
-                        '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkTargetInfo + '</small>' +
+                        // '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkTargetInfo + '</small>' +
                       '</div>';
         body +=
                       '<div class="note-form-group form-group note-group-imageAttributes-link-class ' + hideAdvancedOptions + '">' +
