@@ -143,7 +143,13 @@
                       '<div class="note-form-group form-group note-group-imageAttributes-link-target">' +
                         '<label class="control-label note-form-label col-xs-3">' + lang.imageAttributes.linkTarget + '</label>' +
                         '<div class="input-group note-input-group col-xs-12 col-sm-9">' +
-                          '<input class="note-imageAttributes-link-target form-control note-form-control note-input" type="text">' +
+                          // '<input class="note-imageAttributes-link-target form-control note-form-control note-input" type="text">' +
+                          `<select class="note-imageAttributes-link-target form-control note-form-control note-input">
+                            <option>_self</option>
+                            <option>_blank</option>
+                            <option>_top</option>
+                            <option>_parent</option>
+                          </select>` +
                         '</div>' +
                         '<small class="help-block note-help-block text-right">' + lang.imageAttributes.linkTargetInfo + '</small>' +
                       '</div>';
