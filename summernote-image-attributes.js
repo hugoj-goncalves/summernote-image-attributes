@@ -345,6 +345,13 @@
             $linkRole.val(imgInfo.imgLink.attr('role'));
             $linkTarget.val(imgInfo.imgLink.attr('target'));
             $linkRel.val(imgInfo.imgLink.attr('rel'));
+          } else {
+            $linkHref.val('');
+            $linkClass.val('');
+            $linkStyle.val('');
+            $linkRole.val('');
+            $linkTarget.val('');
+            $linkRel.val('');
           }
           ui.onDialogShown(self.$dialog, function () {
             context.triggerEvent('dialog.shown');
